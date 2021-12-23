@@ -1,0 +1,92 @@
+[
+  {
+    "line": 2,
+    "elements": [
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 13477955900,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.setUP()"
+            }
+          }
+        ],
+        "line": 5,
+        "name": "User should navigate to login page successfully",
+        "description": "",
+        "id": "search-on-amazon-homepage;user-should-navigate-to-login-page-successfully",
+        "after": [
+          {
+            "result": {
+              "duration": 102900,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.tearDown(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 412439300,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "I am on home page",
+            "match": {
+              "location": "HomePageTest.iAmOnHomePage()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 5240787700,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I enter \"Laptop\" in search box and click search",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Laptop",
+                  "offset": 9
+                }
+              ],
+              "location": "HomePageTest.iEnterInSearchBoxAndClickSearch(String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1135646500,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I look for \"HP 15-inch Laptop, 11th Generation Intel Core i5-1135G7, Intel Iris Xe Graphics, 8 GB RAM, 256 GB SSD, Windows 11 Home (15-dy2024nr, Natural silver)\" laptop",
+            "match": {
+              "arguments": [
+                {
+                  "val": "HP 15-inch Laptop, 11th Generation Intel Core i5-1135G7, Intel Iris Xe Graphics, 8 GB RAM, 256 GB SSD, Windows 11 Home (15-dy2024nr, Natural silver)",
+                  "offset": 12
+                }
+              ],
+              "location": "HomePageTest.iLookForLaptop(String)"
+            },
+            "keyword": "And "
+          }
+        ]
+      }
+    ],
+    "name": "Search on Amazon HomePage",
+    "description": "As user I want to submit search on amazon home page",
+    "id": "search-on-amazon-homepage",
+    "keyword": "Feature",
+    "uri": "homePage.feature"
+  }
+]
