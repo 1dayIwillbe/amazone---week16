@@ -3,13 +3,13 @@ package com.amazon.pages;
 import com.amazon.utility.Utility;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
-import java.util.Objects;
 
 public class SearchResultPage extends Utility {
 
@@ -24,58 +24,62 @@ public class SearchResultPage extends Utility {
     @FindBy(xpath = "//span[@class='a-size-medium a-color-base a-text-normal']")
     List<WebElement> result;
 
-
-    @FindBy(xpath = "//a[normalize-space()='Next']")
-    WebElement nextPage;
     @CacheLookup
-    @FindBy(xpath = "(//span[normalize-space()='2021 Newest Lenovo Flex 5 14.0' FHD Touchscreen Laptop, AMD Ryzen 3 5300U(up to 3.80 GHz), 4GB RAM 512GB NVMe SSD, Webcam, HDMI, Win 10 S")
-    WebElement searchItem;
+    @FindBy(id = "quantity")
+    WebElement qtyDropdown;
+    @CacheLookup
+    @FindBy(xpath = "//input[@id='add-to-cart-button']")
+    WebElement addToCartButton;
+    @CacheLookup
+    @FindBy(xpath = "//div[@id='attachDisplayAddBaseAlert']//h4[@class='a-alert-heading'][normalize-space()='Added to Cart']")
+    WebElement verifyAddToCart;
+
+    @CacheLookup
+    @FindBy(xpath = "//span[contains(text(),'Added to Cart')]")
+    WebElement mobileVerify;
 
 
     public void searchItemFromList(String text) throws InterruptedException {
-        boolean hasNextPage =true;
-        do{
-               if(nextPage.isEnabled()){
-                for (WebElement menu : result) {
-                if (Objects.equals(menu.getText(), text)) {
-                    menu.click();
-                     hasNextPage = false;
-                                    break;
-
-                }}}
-                else nextPage.click();
-                    hasNextPage=true;
+        boolean myBreak = true;
+        while (myBreak) {
+            for (WebElement menu : result) {
+                if (menu.getText().equalsIgnoreCase(text)) {
+                    System.out.println(menu.getText());
+                    clickOnElement(menu);
+                    myBreak = false;
                     break;
-              } while (true);
-
+                }
+            }
+            if (myBreak) {
+                if (!driver.getCurrentUrl().contains("page=20")) {
+                    waitUntilVisibilityOfElementLocated(By.linkText("Next"), 100).click();
+                } else {
+                    myBreak = false;
+                }
+                PageFactory.initElements(driver, this);
+                Thread.sleep(5000);
+            }
         }
+    }
+
+
+    public void selectQty(String qty) {
+        selectByVisibleTextFromDropDown(qtyDropdown, qty);
+    }
+
+    public void clickAddButton() {
+        clickOnElement(addToCartButton);
+    }
+
+    public String addToCartVerify() throws InterruptedException {
+        Thread.sleep(2000);
+        return getTextFromElement(verifyAddToCart);
+
+    }
+
+    public String mobileVerify() {
+        return getTextFromElement(mobileVerify);
+    }
+
+
 }
-
-
-
-
-
-/**for (WebElement svp : searchPageResult) {
- String txt = svp.getText();
- if (txt.equalsIgnoreCase(text)) {
- System.out.println(svp);
- svp.click();
- break;
- _____________
- for (WebElement menu : result) {
- String link = getTextFromElement(menu);
- if (Objects.equals(link, text)) {
- menu.click();
- break;
- }}
-
- __________
- for (WebElement menu : result) {
- String link = getTextFromElement(menu);
- if (Objects.equals(link, text)) {
- menu.click();
- System.out.println("click on item");
- break;
- } else nextPage.click();
- System.out.println("Click on next page");
- */

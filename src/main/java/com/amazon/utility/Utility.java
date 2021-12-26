@@ -259,6 +259,7 @@ public class Utility extends ManageDriver {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
 
+
     public WebElement waitForElementWithFluentWait(By by, int time, int pollingTime) {
         Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
                 .withTimeout(Duration.ofSeconds(time))
