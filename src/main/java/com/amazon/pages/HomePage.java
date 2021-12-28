@@ -24,7 +24,7 @@ public class HomePage extends Utility {
     @FindBy (id = "twotabsearchtextbox")
     WebElement searchBar;
 
-    //public void clickOkToAlert(){        clickOnElement(alertok);    }
+
 
     public void sendTextToSearch(String searchText){
         sendTextToElement(searchBar,searchText);

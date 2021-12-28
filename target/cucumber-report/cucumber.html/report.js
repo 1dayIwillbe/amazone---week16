@@ -7,7 +7,7 @@ formatter.feature({
   "keyword": "Feature"
 });
 formatter.before({
-  "duration": 28242730800,
+  "duration": 14379981800,
   "status": "passed"
 });
 formatter.scenario({
@@ -21,6 +21,10 @@ formatter.scenario({
     {
       "line": 13,
       "name": "@Sanity"
+    },
+    {
+      "line": 13,
+      "name": "@Regression"
     }
   ]
 });
@@ -58,7 +62,7 @@ formatter.match({
   "location": "HomePageTest.iAmOnHomePage()"
 });
 formatter.result({
-  "duration": 589940900,
+  "duration": 372955600,
   "status": "passed"
 });
 formatter.match({
@@ -71,7 +75,7 @@ formatter.match({
   "location": "HomePageTest.iEnterInSearchBoxAndClickSearch(String)"
 });
 formatter.result({
-  "duration": 10862522000,
+  "duration": 6569625300,
   "status": "passed"
 });
 formatter.match({
@@ -82,46 +86,4 @@ formatter.match({
     }
   ],
   "location": "HomePageTest.iLookForLaptop(String)"
-});
-formatter.result({
-  "duration": 16904402500,
-  "status": "passed"
-});
-formatter.match({
-  "arguments": [
-    {
-      "val": "2",
-      "offset": 19
-    }
-  ],
-  "location": "HomePageTest.iSelectQuantity(String)"
-});
-formatter.result({
-  "duration": 2990562300,
-  "status": "passed"
-});
-formatter.match({
-  "location": "HomePageTest.iClickOnAddToCart()"
-});
-formatter.result({
-  "duration": 4441952200,
-  "status": "passed"
-});
-formatter.match({
-  "arguments": [
-    {
-      "val": "Added to Cart",
-      "offset": 15
-    }
-  ],
-  "location": "HomePageTest.iVerifyWordOnPage(String)"
-});
-formatter.result({
-  "duration": 1182596900,
-  "status": "passed"
-});
-formatter.after({
-  "duration": 146000,
-  "status": "passed"
-});
 });
